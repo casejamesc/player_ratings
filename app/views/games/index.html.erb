@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Games</h1>
+
+<table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Player 1</th>
+      <th>Player 2</th>
+      <th>Player 1 Goals</th>
+      <th>Player 2 Goals</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= link_to game.player1.name, game.player1 %>: <%= game.player1_rating %> </td>
+        <td><%= link_to game.player2.name, game.player2 %>: <%= game.player2_rating %> </td>
+        <td><%= game.player1_goals %></td>
+        <td><%= game.player2_goals %></td>
+        <td><%= link_to 'Edit', edit_game_path(game) %></td>
+        <td><%= link_to 'Delete', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h4><%= link_to 'New Game', new_game_path %></h4>

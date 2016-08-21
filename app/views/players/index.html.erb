@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Players</h1>
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Record</th>
+      <th>Goals Per Game</th>
+      <th>Points Per Game</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= link_to player.name, player %></td>
+        <td><%= player.record %></td>
+        <td><%= number_with_precision(player.goals_per_game, precision: 2) %></td>
+        <td><%= number_with_precision(player.points_per_game, precision: 2) %></td>
+        <td><%= number_with_precision(player.rating.value, precision: 1) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h4><%= link_to 'New Game', new_game_path %></h4>
+<br>
+<h4><%= link_to 'New Player', new_player_path %></h4>

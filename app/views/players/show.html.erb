@@ -1,0 +1,39 @@
+<h2><%= link_to @player.name, edit_player_path(@player)  %></h2>
+<%= link_to 'All Players', players_path %>
+
+<p id="notice"><%= notice %></p>
+
+<h4>
+  Rating: <%= number_with_precision(@player.rating.value, precision: 0) %>
+</h4>
+
+<table class="table table-condensed">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Player 1</th>
+      <th>Player 2</th>
+      <th>Player 1 Goals</th>
+      <th>Player 2 Goals</th>
+      <th>Total Adjustment</th>
+      <th>Margin of Victory Portion</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @player.adjustments.each do |adjustment| %>
+    <% klass = adjustment.positive? ? "table-success" : "table-danger"  %>
+    <tr class="<%= klass %>">
+      <td><%= link_to adjustment.game.player1.name, adjustment.game.player1 %></td>
+      <td><%= link_to adjustment.game.player2.name, adjustment.game.player2 %></td>
+      <td><%= adjustment.game.player1_goals %></td>
+      <td><%= adjustment.game.player2_goals %></td>
+      <td><%= number_with_precision(adjustment.value, precision: 0) %></td>
+      <td><%= number_with_precision(adjustment.margin_of_victory_adjustment, precision: 0) %></td>
+      <td><%= adjustment.created_at.strftime("%m/%d/%y (%H:%M:%S)") %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h4>Rating Over Time</h4>
+<%= line_chart @player.ratings_over_time, min: @player.min_rating, max: @player.max_rating %>

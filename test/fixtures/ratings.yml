@@ -1,0 +1,28 @@
+anthon_rating:
+  player: anthon
+  value: 2600
+billy_rating:
+  player: billy
+  value: 2400
+casey_rating:
+  player: casey
+  value: 2200
+ian_rating:
+  player: ian
+  value: 2200
+jason_rating:
+  player: jason
+  value: 1800
+jeron_rating:
+  player: jeron
+  value: 1600
+matt_rating:
+  player: matt
+  value: 1400
+mike_rating:
+  player: mike
+  value: 1200
+steve_rating:
+  player: steve
+  value: 1000
+
