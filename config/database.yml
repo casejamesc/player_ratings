@@ -23,4 +23,7 @@ test:
 
 production:
   <<: *default
+  host: ratingsdb.cqgfwgkuom10.us-west-2.rds.amazonaws.com
   database: ratings_production
+  user: ratingsrds
+  password: Something1
